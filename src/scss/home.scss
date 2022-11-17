@@ -112,11 +112,11 @@
    }
 
    &__arrow--prev {
-      background: #e89f71 url("/img/icons/p-left.svg") center no-repeat;
+      background: #e89f71 url("../img/icons/p-left.svg") center no-repeat;
    }
 
    &__arrow--next {
-      background: #e89f71 url("/img/icons/p-right.svg") center no-repeat;
+      background: #e89f71 url("../img/icons/p-right.svg") center no-repeat;
    }
    &__arrow--prev,
    &__arrow--next {
@@ -603,11 +603,11 @@
    }
 
    &__arrow--next {
-      background: #fff url("/img/rooms/arrow/p-right.svg") center no-repeat;
+      background: #fff url("../img/rooms/arrow/p-right.svg") center no-repeat;
    }
 
    &__arrow--prev {
-      background: #fff url("/img/rooms/arrow/p-left.svg") center no-repeat;
+      background: #fff url("../img/rooms/arrow/p-left.svg") center no-repeat;
       @media (min-width: $mobileSmall) {
          opacity: 0;
       }
