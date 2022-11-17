@@ -1,0 +1,26 @@
+.btn {
+   background-color: #e89f71;
+   color: #fff;
+   cursor: pointer;
+}
+.text {
+   font-weight: 500;
+   font-size: 16px;
+   line-height: 150%;
+   color: $grayColor;
+}
+
+.area {
+   width: 48px;
+   height: 48px;
+   line-height: 48px;
+   text-align: center;
+   border-radius: 50%;
+   color: #fff;
+   font-weight: 500;
+   font-size: 16px;
+   position: absolute;
+   z-index: 3;
+   top: 24px;
+   right: 24px;
+}
