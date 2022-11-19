@@ -841,6 +841,9 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1463,6 +1466,119 @@ body {
 .product-description-rooms__button._icon-arrow-link::before {
   color: #fff;
   font-size: 14px;
+}
+
+.page__tipstricks {
+  padding: 44px 0px;
+  background-color: #fff;
+}
+
+.tipstricks__title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 120%;
+}
+.tipstricks__body {
+  position: relative;
+  margin-top: 32px;
+}
+.tipstricks__body:first-child {
+  margin-top: 0;
+}
+
+.body-tipstricks-slider__img {
+  padding-bottom: 64%;
+}
+.body-tipstricks-slider__description {
+  margin-top: 16px;
+  padding: 0px 35px 16px 16px;
+}
+.body-tipstricks-slider__description:first-child {
+  margin-top: 0;
+}
+.body-tipstricks-slider .swiper-slide-active {
+  background-color: rgba(97, 97, 97, 0.1);
+  -webkit-box-shadow: 0px 20px 20px 0px rgb(202, 202, 216);
+          box-shadow: 0px 20px 20px 0px rgb(202, 202, 216);
+}
+@media (max-width: 767.98px) {
+  .body-tipstricks-slider .swiper-slide-active {
+    -webkit-box-shadow: 0px 10px 10px 0px rgb(202, 202, 216);
+            box-shadow: 0px 10px 10px 0px rgb(202, 202, 216);
+  }
+}
+.body-tipstricks-slider__pagination {
+  margin-top: 45px;
+  text-align: center;
+}
+@media (max-width: 767.98px) {
+  .body-tipstricks-slider__pagination {
+    margin-top: 20px;
+  }
+}
+.body-tipstricks-slider__arrows {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: absolute;
+  width: 100%;
+  top: 40%;
+  left: 0;
+  z-index: 10;
+}
+@media (max-width: 1270px) {
+  .body-tipstricks-slider__arrows {
+    top: 10%;
+  }
+}
+
+.description-body-tipstricks-slider__title {
+  font-weight: 600;
+  line-height: 120%;
+  font-size: 24px;
+}
+@media (max-width: 1240px) {
+  .description-body-tipstricks-slider__title {
+    font-size: calc(20px + 4 * ((100vw - 320px) / 920));
+  }
+}
+.description-body-tipstricks-slider__date {
+  margin-top: 8px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #898989;
+}
+.description-body-tipstricks-slider__date:first-child {
+  margin-top: 0;
+}
+
+.body-tipstricks-slider__arrow {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.16);
+          box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.16);
+}
+.body-tipstricks-slider__arrow--prev {
+  background: #fff url("../img/rooms/arrow/p-left.svg") center no-repeat;
+  -webkit-transform: translateX(-24px);
+          transform: translateX(-24px);
+}
+.body-tipstricks-slider__arrow--next {
+  background: #fff url("../img/rooms/arrow/p-right.svg") center no-repeat;
+  -webkit-transform: translateX(24px);
+          transform: translateX(24px);
+}
+@media (max-width: 1300px) {
+  .body-tipstricks-slider__arrow--prev, .body-tipstricks-slider__arrow--next {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
 }
 
 .page {

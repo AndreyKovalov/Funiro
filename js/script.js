@@ -36,6 +36,7 @@ const handleClick = event => {
 
 $(".menu__arrow").on("click", handleClick)
 
+
 jQuery('.page').click(function (event) {
    // проверяем находится ли элемент на который кликнули в нашем меню,
    // то есть в контейнере "menu-container"
@@ -119,7 +120,7 @@ const swiper = new Swiper('.slider-main-block', {
 
 });
 
-// slider
+// slider rooms
 if (document.querySelector('.body-rooms-slider')) {
    new Swiper('.body-rooms-slider', {
       // Optional parameters
@@ -159,6 +160,56 @@ if (document.querySelector('.body-rooms-slider')) {
       navigation: {
          nextEl: '.body-rooms-slider .body-rooms-slider__arrow--next',
          prevEl: '.body-rooms-slider .body-rooms-slider__arrow--prev',
+      },
+
+   })
+};
+
+// slider trickstips
+if (document.querySelector('.body-tipstricks-slider')) {
+   new Swiper('.body-tipstricks-slider', {
+      // Optional parameters
+      loop: true,
+      initialSlide: 1,
+      watchOverflow: true,
+      preloadImages: false,
+
+      autoplay: {
+         delay: 4000,
+         disableOnInteraction: true
+      },
+
+      breakpoints: {
+         // when window width is >= 320px
+         320: {
+            slidesPerView: 1,
+            spaceBetween: 10
+         },
+         // when window width is >= 480px
+         580: {
+            slidesPerView: 2,
+            spaceBetween: 24,
+            centeredSlides: false
+         },
+         997: {
+            slidesPerView: 3,
+            spaceBetween: 24,
+            centeredSlides: true
+         },
+      },
+
+      speed: 800,
+
+      // If we need pagination
+      pagination: {
+         el: '.body-tipstricks-slider__pagination',
+         type: 'bullets',
+      },
+
+      // Navigation arrows
+      navigation: {
+         nextEl: '.body-tipstricks .body-tipstricks-slider__arrow--next',
+         prevEl: '.body-tipstricks .body-tipstricks-slider__arrow--prev',
       },
 
    })

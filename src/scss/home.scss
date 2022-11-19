@@ -130,6 +130,7 @@
 .slider-main-block {
    &__pagination {
       display: flex;
+      align-items: center;
       justify-content: center;
       position: absolute;
       top: 50%;
@@ -716,6 +717,162 @@
       &._icon-arrow-link::before {
          color: #fff;
          font-size: 14px;
+      }
+   }
+}
+
+// trickstips ====================================
+.page {
+   // .page__tipstricks
+
+   &__tipstricks {
+      padding: 44px 0px;
+      background-color: #fff;
+   }
+}
+.tipstricks {
+   // .tipstricks__container
+
+   &__container {
+   }
+
+   // .tipstricks__title
+
+   &__title {
+      text-align: center;
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 120%;
+   }
+
+   // .tipstricks__body
+
+   &__body {
+      position: relative;
+      margin-top: 32px;
+      &:first-child {
+         margin-top: 0;
+      }
+   }
+}
+.body-tipstricks {
+   // .body-tipstricks__slider
+
+   &__slider {
+   }
+}
+.body-tipstricks-slider {
+   // .body-tipstricks-slider__wrapper
+
+   &__wrapper {
+   }
+
+   // .body-tipstricks-slider__slide
+
+   &__slide {
+   }
+
+   // .body-tipstricks-slider__img
+
+   &__img {
+      padding-bottom: 64%;
+   }
+
+   // .body-tipstricks-slider__description
+
+   &__description {
+      margin-top: 16px;
+      padding: 0px 35px 16px 16px;
+      &:first-child {
+         margin-top: 0;
+      }
+   }
+
+   .swiper-slide-active {
+      background-color: rgba(97, 97, 97, 0.1);
+      box-shadow: 0px 20px 20px 0px rgba(202, 202, 216, 1);
+      @media (max-width: $mobile) {
+         box-shadow: 0px 10px 10px 0px rgba(202, 202, 216, 1);
+      }
+   }
+
+   // .body-tipstricks-slider__pagination
+
+   &__pagination {
+      margin-top: 45px;
+      text-align: center;
+      @media (max-width: $mobile) {
+         margin-top: 20px;
+      }
+   }
+
+   // .body-tipstricks-slider__arrows
+
+   &__arrows {
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+      width: 100%;
+      top: 40%;
+      left: 0;
+      z-index: 10;
+      @media (max-width: $pc) {
+         top: 10%;
+      }
+   }
+}
+
+.description-body-tipstricks-slider {
+   // .description-body-tipstricks-slider__title
+
+   &__title {
+      font-weight: 600;
+      line-height: 120%;
+      @include adaptiv-value(font-size, 24, 20, 1);
+   }
+
+   // .description-body-tipstricks-slider__date
+
+   &__date {
+      margin-top: 8px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 150%;
+      color: $grayColor;
+      &:first-child {
+         margin-top: 0;
+      }
+   }
+}
+
+.body-tipstricks-slider {
+   // .body-rooms-slider__arrow
+
+   &__arrow {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.16);
+   }
+
+   // .body-rooms-slider__arrow--prev
+
+   &__arrow--prev {
+      background: #fff url("../img/rooms/arrow/p-left.svg") center no-repeat;
+      transform: translateX(-24px);
+   }
+
+   // .body-rooms-slider__arrow--next
+
+   &__arrow--next {
+      background: #fff url("../img/rooms/arrow/p-right.svg") center no-repeat;
+      transform: translateX(24px);
+   }
+
+   @media (max-width: 1300px) {
+      &__arrow--prev,
+      &__arrow--next {
+         transform: translateX(0);
       }
    }
 }
