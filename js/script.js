@@ -1,3 +1,5 @@
+//Gallery
+lightGallery(document.getElementById('lightgallery'))
 
 let menuBtn = document.querySelector('.menu__btn');
 let menu = document.querySelector('.menu__body');
@@ -171,7 +173,6 @@ if (document.querySelector('.body-tipstricks-slider')) {
       // Optional parameters
       loop: true,
       initialSlide: 1,
-      watchOverflow: true,
       preloadImages: false,
 
       autoplay: {
@@ -183,17 +184,17 @@ if (document.querySelector('.body-tipstricks-slider')) {
          // when window width is >= 320px
          320: {
             slidesPerView: 1,
-            spaceBetween: 10
+            spaceBetween: 0
          },
          // when window width is >= 480px
          580: {
             slidesPerView: 2,
-            spaceBetween: 24,
+            spaceBetween: 26,
             centeredSlides: false
          },
          997: {
             slidesPerView: 3,
-            spaceBetween: 24,
+            spaceBetween: 26,
             centeredSlides: true
          },
       },
@@ -245,5 +246,6 @@ $(document).ready(function () {
       initTwenty();
    });
 });
+
 
 
