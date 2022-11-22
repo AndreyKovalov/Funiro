@@ -759,13 +759,18 @@
       &:first-child {
          margin-top: 0;
       }
+      @media (max-width: $pc) {
+         margin: 32px 0px 0px;
+      }
    }
 }
 .body-tipstricks {
    // .body-tipstricks__slider
 
    &__slider {
-      padding: 0px 24px;
+      @media (min-width: $pc) {
+         padding: 0px 24px;
+      }
    }
 }
 .body-tipstricks-slider {
