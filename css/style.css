@@ -2899,6 +2899,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   -webkit-box-direction: reverse;
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse;
+  gap: 10px;
 }
 ._init .menu-footer__title::before {
   font-size: 12px;
@@ -2944,7 +2945,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   margin-top: 16px;
 }
 .form-footer__form:first-child {
-  margin-top: o;
+  margin-top: 0;
 }
 .form-footer__input {
   -webkit-box-flex: 1;

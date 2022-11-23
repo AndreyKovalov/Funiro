@@ -126,6 +126,7 @@
          display: flex;
          align-items: center;
          flex-direction: row-reverse;
+         gap: 10px;
          @extend ._icon-arrow-down;
          &::before {
             @extend %ic;
@@ -176,7 +177,7 @@
       gap: 4px;
       margin-top: 16px;
       &:first-child {
-         margin-top: o;
+         margin-top: 0;
       }
    }
 
