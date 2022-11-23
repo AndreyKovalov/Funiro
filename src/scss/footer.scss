@@ -65,7 +65,7 @@
    // .main-footer__text
 
    &__text {
-      @include adaptiv-value(margin-top, 16, 6, 1);
+      @include adaptiv-value(margin-top, 16, 10, 1);
       line-height: 150%;
       color: $darkGrayColor;
       &:first-child {
@@ -76,7 +76,7 @@
    // .main-footer__items
 
    &__items {
-      @include adaptiv-value(margin-top, 16, 6, 1);
+      @include adaptiv-value(margin-top, 16, 10, 1);
       display: flex;
       flex-direction: column;
       &:first-child {
@@ -87,7 +87,7 @@
    // .main-footer__item
 
    &__item {
-      @include adaptiv-value(margin-top, 16, 6, 1);
+      @include adaptiv-value(margin-top, 16, 12, 1);
       display: inline-flex;
       &:first-child {
          margin-top: 0;
@@ -122,14 +122,32 @@
    // .menu-footer__title
 
    &__title {
-      margin-bottom: 16px;
+      ._init & {
+         display: flex;
+         align-items: center;
+         flex-direction: row-reverse;
+         @extend ._icon-arrow-down;
+         &::before {
+            @extend %ic;
+            font-size: 12px;
+         }
+      }
+      &._active {
+         &::before {
+            transform: rotate(180deg);
+         }
+      }
    }
 
    // .menu-footer__list
 
    &__list {
+      margin-top: 16px;
+      &:first-child {
+         margin-top: 0;
+      }
       li {
-         @include adaptiv-value(margin-top, 16, 6, 1);
+         @include adaptiv-value(margin-top, 16, 14, 1);
          &:first-child {
             margin-top: 0;
          }
@@ -139,7 +157,7 @@
    // .menu-footer__link
 
    &__link {
-      @include adaptiv-value(margin-top, 16, 6, 1);
+      @include adaptiv-value(margin-top, 16, 10, 1);
       font-weight: 400;
       font-size: 16px;
       line-height: 150%;
@@ -156,7 +174,7 @@
    &__form {
       display: flex;
       gap: 4px;
-      @include adaptiv-value(margin-top, 16, 6, 1);
+      margin-top: 16px;
       &:first-child {
          margin-top: o;
       }
@@ -170,6 +188,7 @@
       background-color: #f4f5f7;
       color: #828282;
       font-size: 16px;
+      max-width: 500px;
    }
 
    // .form-footer__btn

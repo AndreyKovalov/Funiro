@@ -1,3 +1,10 @@
+//Menu
+let menuBtn = document.querySelector('.menu__btn');
+let menu = document.querySelector('.menu__body');
+menuBtn.addEventListener('click', () => {
+   menuBtn.classList.toggle('_active');
+   menu.classList.toggle('_active');
+})
 
 jQuery('.page').click(function (event) {
    // проверяем находится ли элемент на который кликнули в нашем меню,
@@ -237,19 +244,9 @@ $(document).ready(function () {
 });
 
 
-//==== Модуь работы со спойлерами =======================================================================================================================================================================================================================
-/*
-Для родителя слойлеров пишем атрибут data-spollers
-Для заголовков слойлеров пишем атрибут data-spoller
-Если нужно включать\выключать работу спойлеров на разных размерах экранов
-пишем параметры ширины и типа брейкпоинта.
 
-Например: 
-data-spollers="992,max" - спойлеры будут работать только на экранах меньше или равно 992px
-data-spollers="768,min" - спойлеры будут работать только на экранах больше или равно 768px
-
-Если нужно что бы в блоке открывался болько один слойлер добавляем атрибут data-one-spoller
-*/
+// ============
+// SPOLLERS
 const spollersArray = document.querySelectorAll('[data-spollers]');
 if (spollersArray.length > 0) {
    // Получение обычных слойлеров
@@ -260,10 +257,12 @@ if (spollersArray.length > 0) {
    if (spollersRegular.length > 0) {
       initSpollers(spollersRegular);
    }
+
    // Получение слойлеров с медиа запросами
    const spollersMedia = Array.from(spollersArray).filter(function (item, index, self) {
       return item.dataset.spollers.split(",")[0];
    });
+
    // Инициализация слойлеров с медиа запросами
    if (spollersMedia.length > 0) {
       const breakpointsArray = [];
@@ -276,6 +275,7 @@ if (spollersArray.length > 0) {
          breakpoint.item = item;
          breakpointsArray.push(breakpoint);
       });
+
       // Получаем уникальные брейкпоинты
       let mediaQueries = breakpointsArray.map(function (item) {
          return '(' + item.type + "-width: " + item.value + "px)," + item.value + ',' + item.type;
@@ -283,12 +283,14 @@ if (spollersArray.length > 0) {
       mediaQueries = mediaQueries.filter(function (item, index, self) {
          return self.indexOf(item) === index;
       });
+
       // Работаем с каждым брейкпоинтом
       mediaQueries.forEach(breakpoint => {
          const paramsArray = breakpoint.split(",");
          const mediaBreakpoint = paramsArray[1];
          const mediaType = paramsArray[2];
          const matchMedia = window.matchMedia(paramsArray[0]);
+
          // Объекты с нужными условиями
          const spollersArray = breakpointsArray.filter(function (item) {
             if (item.value === mediaBreakpoint && item.type === mediaType) {
@@ -296,7 +298,7 @@ if (spollersArray.length > 0) {
             }
          });
          // Событие
-         matchMedia.addEventListener("change", function () {
+         matchMedia.addListener(function () {
             initSpollers(spollersArray, matchMedia);
          });
          initSpollers(spollersArray, matchMedia);
@@ -307,11 +309,11 @@ if (spollersArray.length > 0) {
       spollersArray.forEach(spollersBlock => {
          spollersBlock = matchMedia ? spollersBlock.item : spollersBlock;
          if (matchMedia.matches || !matchMedia) {
-            spollersBlock.classList.add('_spoller-init');
+            spollersBlock.classList.add('_init');
             initSpollerBody(spollersBlock);
             spollersBlock.addEventListener("click", setSpollerAction);
          } else {
-            spollersBlock.classList.remove('_spoller-init');
+            spollersBlock.classList.remove('_init');
             initSpollerBody(spollersBlock, false);
             spollersBlock.removeEventListener("click", setSpollerAction);
          }
@@ -323,8 +325,8 @@ if (spollersArray.length > 0) {
       if (spollerTitles.length > 0) {
          spollerTitles.forEach(spollerTitle => {
             if (hideSpollerBody) {
-               spollerTitle.removeAttribute('tabindex',);
-               if (!spollerTitle.classList.contains('_spoller-active')) {
+               spollerTitle.removeAttribute('tabindex');
+               if (!spollerTitle.classList.contains('_active')) {
                   spollerTitle.nextElementSibling.hidden = true;
                }
             } else {
@@ -341,23 +343,158 @@ if (spollersArray.length > 0) {
          const spollersBlock = spollerTitle.closest('[data-spollers]');
          const oneSpoller = spollersBlock.hasAttribute('data-one-spoller') ? true : false;
          if (!spollersBlock.querySelectorAll('._slide').length) {
-            if (oneSpoller && !spollerTitle.classList.contains('_spoller-active')) {
+            if (oneSpoller && !spollerTitle.classList.contains('_active')) {
                hideSpollersBody(spollersBlock);
             }
-            spollerTitle.classList.toggle('_spoller-active');
+            spollerTitle.classList.toggle('_active');
             _slideToggle(spollerTitle.nextElementSibling, 500);
          }
          e.preventDefault();
       }
    }
    function hideSpollersBody(spollersBlock) {
-      const spollerActiveTitle = spollersBlock.querySelector('[data-spoller]._spoller-active');
+      const spollerActiveTitle = spollersBlock.querySelector('[data-spoller]._active');
       if (spollerActiveTitle) {
-         spollerActiveTitle.classList.remove('_spoller-active');
+         spollerActiveTitle.classList.remove('_active');
          _slideUp(spollerActiveTitle.nextElementSibling, 500);
       }
    }
 }
+//=================
+//SearchInList
+function search_in_list(input) {
+   let ul = input.parentNode.querySelector('ul')
+   let li = ul.querySelectorAll('li');
+   let filter = input.value.toUpperCase();
 
+   for (i = 0; i < li.length; i++) {
+      let el = li[i];
+      let item = el;
+      txtValue = item.textContent || item.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+         el.style.display = "";
+      } else {
+         el.style.display = "none";
+      }
+   }
+}
+//=================
+//SlideToggle
+let _slideUp = (target, duration = 500) => {
+   if (!target.classList.contains('_slide')) {
+      target.classList.add('_slide');
+      target.style.transitionProperty = 'height, margin, padding';
+      target.style.transitionDuration = duration + 'ms';
+      target.style.height = target.offsetHeight + 'px';
+      target.offsetHeight;
+      target.style.overflow = 'hidden';
+      target.style.height = 0;
+      target.style.paddingTop = 0;
+      target.style.paddingBottom = 0;
+      target.style.marginTop = 0;
+      target.style.marginBottom = 0;
+      window.setTimeout(() => {
+         target.hidden = true;
+         target.style.removeProperty('height');
+         target.style.removeProperty('padding-top');
+         target.style.removeProperty('padding-bottom');
+         target.style.removeProperty('margin-top');
+         target.style.removeProperty('margin-bottom');
+         target.style.removeProperty('overflow');
+         target.style.removeProperty('transition-duration');
+         target.style.removeProperty('transition-property');
+         target.classList.remove('_slide');
+      }, duration);
+   }
+}
+// анимированно показывает объект
+let _slideDown = (target, duration = 500) => {
+   if (!target.classList.contains('_slide')) {
+      target.classList.add('_slide');
+      if (target.hidden) {
+         target.hidden = false;
+      }
+      let height = target.offsetHeight;
+      target.style.overflow = 'hidden';
+      target.style.height = 0;
+      target.style.paddingTop = 0;
+      target.style.paddingBottom = 0;
+      target.style.marginTop = 0;
+      target.style.marginBottom = 0;
+      target.offsetHeight;
+      target.style.transitionProperty = "height, margin, padding";
+      target.style.transitionDuration = duration + 'ms';
+      target.style.height = height + 'px';
+      target.style.removeProperty('padding-top');
+      target.style.removeProperty('padding-bottom');
+      target.style.removeProperty('margin-top');
+      target.style.removeProperty('margin-bottom');
+      window.setTimeout(() => {
+         target.style.removeProperty('height');
+         target.style.removeProperty('overflow');
+         target.style.removeProperty('transition-duration');
+         target.style.removeProperty('transition-property');
+         target.classList.remove('_slide');
+      }, duration);
+   }
+}
+let _slideToggle = (target, duration = 500) => {
+   if (target.hidden) {
+      return _slideDown(target, duration);
+   } else {
+      return _slideUp(target, duration);
+   }
+}
+//========================================
+//Wrap
+function _wrap(el, wrapper) {
+   el.parentNode.insertBefore(wrapper, el);
+   wrapper.appendChild(el);
+}
+//========================================
+//RemoveClasses
+function _removeClasses(el, class_name) {
+   for (var i = 0; i < el.length; i++) {
+      el[i].classList.remove(class_name);
+   }
+}
+//========================================
+//IsHidden
+function _is_hidden(el) {
+   return (el.offsetParent === null)
+}
 
+//SearchInList
+function search_in_list(input) {
+   let ul = input.parentNode.querySelector('ul')
+   let li = ul.querySelectorAll('li');
+   let filter = input.value.toUpperCase();
+
+   for (i = 0; i < li.length; i++) {
+      let el = li[i];
+      let item = el;
+      txtValue = item.textContent || item.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+         el.style.display = "";
+      } else {
+         el.style.display = "none";
+      }
+   }
+}
+//=================
+//Gallery
+let gallery = document.querySelectorAll('._gallery');
+if (gallery) {
+   gallery_init();
+}
+function gallery_init() {
+   for (let index = 0; index < gallery.length; index++) {
+      const el = gallery[index];
+      lightGallery(el, {
+         counter: false,
+         selector: 'a',
+         download: false
+      });
+   }
+}
 

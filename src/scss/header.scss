@@ -233,7 +233,7 @@
          transform-origin: 50% 50%;
          font-size: 17px;
          &.__show {
-            display: none;
+            animation: none;
          }
       }
       @media (min-width: 530px) {
